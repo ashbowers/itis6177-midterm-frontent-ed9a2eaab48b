@@ -1,0 +1,328 @@
+{
+  "name": "Ghostbusters Billing Manager",
+  "baseUrl": "http://localhost:3001",
+  "errorMessageDataPath":"message",
+  "pages": [
+    {
+      "name": "Ghostbusters",
+      "id": "busters",
+      "description": "List Ghostbusters",
+      "methods": {
+        "getAll": {
+          "label": "Get All",
+          "url": "/busters",
+          "dataPath": "data",
+          "queryParams": [{
+  	      "name": "search",
+              "value": "",
+              "label": "Search"
+	  }],
+          "display": {
+            "type": "table"
+          },
+	  "fields": [
+		  {
+			"name":"id",
+			"type":"text",
+			"label":"ID"
+		  },
+		  {
+			"name":"name",
+			"type":"text",
+			"label":"Name"
+		  }
+	  ]
+	}
+      }
+    },
+    {
+      "name": "Spirits",
+      "id": "spirits",
+      "description": "List Known Spirits",
+      "methods": {
+        "getAll": {
+          "label": "Get All",
+          "url": "/spirits",
+          "dataPath": "data",
+          "queryParams": [{
+             "name": "search",
+              "value": "",
+              "label": "Search"
+   	} ],
+          "display": {
+            "type": "table"
+          },
+	  "fields": [
+		  {
+			"name":"id",
+			"type":"text",
+			"label":"ID"
+		  },
+		  {
+			"name":"name",
+			"type":"text",
+			"label":"Name"
+		  }
+
+	  ]
+	}
+      }
+    },
+      {
+      "name": "Customers",
+      "id": "customers",
+      "description": "Customer List",
+      "methods": {
+        "getAll": {
+          "label": "Get All Customers",
+          "url": "/customers",
+          "dataPath": "data",
+          "queryParams": [ {
+              "name": "search",
+              "value": "",
+              "label": "Search"
+            } ],
+          "display": {
+            "type": "table"
+          },
+	  "fields": [
+		  {
+			"name":"id",
+			"type":"text",
+			"label":"ID"
+		  },
+		  {
+			"name":"custname",
+			"type":"text",
+			"label":"Customer"
+		  },
+		  {
+			"name":"address",
+			"type":"text",
+			"label":"Address"
+		  },
+		  {
+			"name":"notes",
+			"type":"text",
+			"label":"Notes"
+		  }
+
+	  ]
+	}
+      }
+    },
+    {
+      "name": "Encounters",
+      "id": "encounters",
+      "description": "List cusomter encounters",
+      "methods": {
+        "getAll": {
+          "label": "Get All",
+          "url": "/encounters",
+          "dataPath": "data",
+          "queryParams": [
+            {
+              "name": "search",
+              "value": "",
+              "label": "Search"
+            }
+          ],
+          "display": {
+            "type": "table"
+          },
+          "fields": [
+            {
+              "name": "encounter_id",
+              "type": "text",
+              "label": "ID"
+            },
+            {
+              "name": "custname",
+              "type": "text",
+              "label": "Customer"
+            },
+            {
+              "name": "address",
+              "type": "text",
+              "label": "Address"
+            },
+            {
+              "name": "customer_notes",
+              "type": "text",
+              "label": "Customer Notes"
+            },
+            {
+              "name": "corporatelead",
+              "type": "text",
+              "label": "Lead Buster"
+            },
+            {
+              "name": "encounter_notes",
+              "type": "text",
+              "label": "Encounter Notes"
+            },
+            {
+              "name": "spirit",
+              "type": "text",
+              "label": "Spirit"
+            },
+            {
+              "name": "amount",
+              "type": "text",
+              "label": "Billed Amount"
+            }
+          ]
+        },
+        "getSingle": {
+          "url": "/encounters/:encounter_id",
+          "dataPath": null,
+          "queryParams": [],
+          "requestHeaders": {}
+        },
+        "put": {
+          "url": "/encounters/:encounter_id",
+          "actualMethod": null,
+          "fields": [
+            {
+              "name": "custid",
+              "label": "Customer",
+              "type": "select",
+	      "optionSource": {
+		      "url":"/customers",
+		      "dataPath": "data",
+		      "displayPath": "custname",
+		      "valuePath": "id",
+		      "sortBy": ["custname"]
+	      }
+            },
+            {
+              "name": "spirit",
+              "label": "Spirit",
+              "type": "select",
+	      "optionSource": {
+		      "url":"/spirits",
+		      "dataPath": "data",
+		      "displayPath": "name",
+		      "valuePath": "id",
+		      "sortBy": ["name"]
+	      }
+            },
+            {
+              "name": "leadbuster",
+              "label": "Ghostbuster",
+              "type": "select",
+	      "optionSource": {
+		      "url":"/busters",
+		      "dataPath": "data",
+		      "displayPath": "name",
+		      "valuePath": "id",
+		      "sortBy": ["name"]
+	      }
+            },
+            {
+              "name": "notes",
+              "label": "Notes",
+              "type": "text",
+	      "required": "true"
+            }
+          ]
+        },
+        "post": {
+          "url": "/encounters",
+          "fields": [
+		             {
+              "name": "custid",
+              "label": "Customer",
+              "type": "select",
+	      "optionSource": {
+		      "url":"/customers",
+		      "dataPath": "data",
+		      "displayPath": "custname",
+		      "valuePath": "id",
+		      "sortBy": ["custname"]
+	      }
+            },
+            {
+              "name": "spirit",
+              "label": "Spirit",
+              "type": "select",
+	      "optionSource": {
+		      "url":"/spirits",
+		      "dataPath": "data",
+		      "displayPath": "name",
+		      "valuePath": "id",
+		      "sortBy": ["name"]
+	      }
+            },
+            {
+              "name": "leadbuster",
+              "label": "Ghostbuster",
+              "type": "select",
+	      "optionSource": {
+		      "url":"/busters",
+		      "dataPath": "data",
+		      "displayPath": "name",
+		      "valuePath": "id",
+		      "sortBy": ["name"]
+	      }
+            },
+            {
+              "name": "notes",
+              "label": "Notes",
+              "type": "text",
+	      "required": "true"
+            }
+          ]
+        }
+      }
+    },
+   {
+      "name": "Bills",
+      "id": "bills",
+      "description": "Customer Billing",
+      "methods": {
+	"delete": {
+          "url": "/bills/:bill_id"
+        },
+        "getAll": {
+          "label": "Get All Bills",
+          "url": "/bills",
+          "dataPath": "data",
+          "queryParams": [],
+          "display": {
+            "type": "table"
+          },
+	  "fields": [
+		  {
+			"name":"bill_id",
+			"type":"text",
+			"label":"ID"
+		  },
+		  {
+			"name":"customer_id",
+			"type":"text",
+			"label":"Cust. Id"
+		  },
+		  {
+			"name":"custname",
+			"type":"text",
+			"label":"Customer"
+		  },
+		  {
+			"name":"desc",
+			"type":"text",
+			"label":"Bill Notes"
+		  },
+		  {
+			"name":"amount",
+			"type":"text",
+			"label":"Amount"
+		  }
+
+	  ]
+	}
+      }
+    }
+
+  ]
+}
