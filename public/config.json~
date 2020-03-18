@@ -108,6 +108,50 @@
 		  }
 
 	  ]
+	},
+	"getSingle": {
+          "url": "/customers/:id",
+          "queryParams": [],
+          "requestHeaders": {}
+	},
+	"post":{
+	  "url": "/customers",
+          "fields": [ {
+              "name": "custname",
+              "label": "Customer Name",
+              "type": "text"
+	      },
+	      {
+              "name": "address",
+              "label": "Customer Address",
+              "type": "text"
+	      },
+	      {
+              "name": "notes",
+              "label": "Notes",
+              "type": "text"
+	      }
+	    ]
+	},
+	"put":{
+	  "url": "/customers/:id",
+	  "actualMethod": null,
+          "fields": [ {
+              "name": "custname",
+              "label": "Customer Name",
+              "type": "text"
+	      },
+	      {
+              "name": "address",
+              "label": "Customer Address",
+              "type": "text"
+	      },
+	      {
+              "name": "notes",
+              "label": "Notes",
+              "type": "text"
+	      }
+	    ]
 	}
       }
     },
