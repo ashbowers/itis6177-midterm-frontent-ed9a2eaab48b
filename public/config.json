@@ -109,12 +109,6 @@
 
 	  ]
 	},
-	"getSingle": {
-          "url": "/customers/:id",
-          "dataPath": "data",
-          "queryParams": [],
-          "requestHeaders": {}
-	},
 	"post":{
 	  "url": "/customers",
           "fields": [ {
@@ -173,8 +167,8 @@
             }
           ],
           "display": {
-            "type": "table"
-          },
+            "type": "table",
+          
           "fields": [
             {
               "name": "encounter_id",
@@ -215,21 +209,31 @@
               "name": "amount",
               "type": "text",
               "label": "Billed Amount"
-            }
-          ]
-        },
-        "getSingle": {
-          "url": "/encounters/:encounter_id",
-          "dataPath": null,
-          "queryParams": [],
-          "requestHeaders": {}
+            },
+            {
+              "name": "spirit_id",
+              "type": "text",
+              "label": "Spirit ID"
+	    },
+            {
+              "name": "customer_id",
+              "type": "text",
+              "label": "Customer ID"
+	    },
+            {
+              "name": "buster_id",
+              "type": "text",
+              "label": "GB ID"
+	    }
+            
+          ]}
         },
         "put": {
           "url": "/encounters/:encounter_id",
           "actualMethod": null,
           "fields": [
             {
-              "name": "custid",
+              "name": "customer_id",
               "label": "Customer",
               "type": "select",
 	      "optionSource": {
@@ -241,7 +245,7 @@
 	      }
             },
             {
-              "name": "spirit",
+              "name": "spirit_id",
               "label": "Spirit",
               "type": "select",
 	      "optionSource": {
@@ -253,7 +257,7 @@
 	      }
             },
             {
-              "name": "leadbuster",
+              "name": "buster_id",
               "label": "Ghostbuster",
               "type": "select",
 	      "optionSource": {
@@ -265,7 +269,7 @@
 	      }
             },
             {
-              "name": "notes",
+              "name": "encounter_notes",
               "label": "Notes",
               "type": "text",
 	      "required": "true"
