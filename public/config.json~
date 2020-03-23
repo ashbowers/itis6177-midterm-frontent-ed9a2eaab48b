@@ -6,7 +6,7 @@
     {
       "name": "Ghostbusters",
       "id": "busters",
-      "description": "List Ghostbusters",
+      "description": "Ghostbusters Maintenance",
       "methods": {
         "getAll": {
           "label": "Get All",
@@ -32,8 +32,35 @@
 			"label":"Name"
 		  }
 	  ]
-	}
-      }
+	},
+	"put": {
+          "label": "Change Ghostbuster Name",
+          "url": "/busters/:id",
+	  "actualMethod": null,
+          "fields": [ 
+            {
+              "name": "name",
+              "label": "New Name",
+              "type": "text",
+	      "required": "true"
+            }
+	   ]
+         },
+	 "delete": {
+          "url": "/busters/:id"
+        },
+        "post": {
+          "url": "/busters",
+          "fields": [ 
+            {
+              "name": "bustername",
+              "label": "Name",
+              "type": "text",
+	      "required": "true"
+            }
+	   ]
+         }
+       }
     },
     {
       "name": "Spirits",
@@ -369,9 +396,44 @@
 		  }
 
 	  ]
-	}
-      }
+	},
+       "post": {
+          "url": "/bills",
+          "fields": [ {
+              "name": "encounterid",
+              "label": "Encounter",
+              "type": "select",
+	      "optionSource": {
+		      "url":"/encounters",
+		      "dataPath": "data",
+		      "displayPath": "encounter_name",
+		      "valuePath": "encounter_id",
+		      "sortBy": ["encounter_name"]
+	      }
+            },
+            {
+              "name": "amount",
+              "label": "Amount",
+              "type": "number"
+            },
+            {
+              "name": "description",
+              "label": "Notes",
+              "type": "text",
+	      "required": "true"
+            }
+	]
+      },
+       "put": {
+          "url": "/bills/:bill_id",
+          "fields": [ {
+              "name": "amount",
+              "label": "New Amount",
+              "type": "number"
+            }
+	]
+       }
     }
-
+   }
   ]
 }
